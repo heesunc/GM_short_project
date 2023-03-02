@@ -25,12 +25,15 @@ public class Player : MonoBehaviour
     private int speed = 5; //달리기 속도
     private int mistake = 100; //스와이프 길이
     private bool s = false; //오른쪽 터치면 true, 왼쪽 터치면 false
+    private bool go = true; //앞으로 갈까말까
 
     Rigidbody rg;
+    Transform tf;
     Vector3 startPos;
 
     void Start()
     {
+        tf = gameObject.GetComponent<Transform>();
         rg = gameObject.GetComponent<Rigidbody>();
         startPos = new Vector3(0, 0, 0);
     }
@@ -68,18 +71,24 @@ public class Player : MonoBehaviour
 
         if (isturn != TurnState.NONE) //회전 명령 확인.
         {
+            go = false;
+
             if (isturn == TurnState.LEFT)
             {
-
+                StartCoroutine(turnL());
             }
             else //RIGHT
             {
-                StartCoroutine(turn()); //테스트 해보기
+                StartCoroutine(turnR()); //테스트 해보기
             }
+
+            isturn = TurnState.NONE;
         }
-
-        rg.velocity = new Vector3(move * speed, 0, 0);
-
+        
+        if (go == true)
+        {
+            tf.Translate(Vector3.forward * speed * Time.deltaTime); //앞으로 가도록 함, 게임 속도 보정
+        }
     }
 
     private Vector3 touch(Touch touch) //터치 발생 -> 왼쪽인지 오른쪽인지 확인.
@@ -127,12 +136,11 @@ public class Player : MonoBehaviour
         if (!isJump)
         {
             isJump = true;
-            Debug.Log(isJump);
             rg.AddForce(Vector3.up * f, ForceMode.Impulse);
         }
     }
-
-    void OnCollisionEnter(Collision other) //점프 가능 상태 확인.
+    
+    private void OnCollisionEnter(Collision other) //점프 가능 상태 확인.
     {
         if (other.collider.CompareTag("Floor")) //대소문자 확인
         {
@@ -140,18 +148,39 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator turn() //회전 메소드.
+    private int turnGoal(int r)
     {
-        int rY = (int)rg.rotation.y;
-        while (rY < 90)
-        {
-            rY += 5;
-            rg.MoveRotation(Quaternion.Euler(0, (int)isturn * rY, 0));
-            yield return null;
-        }
+        if (isturn == TurnState.RIGHT)
+                return r + 90;
+        else
+                return r - 90;
     }
 
+    IEnumerator turnR() //회전 메소드.
+    {
+        int rY = (int)tf.eulerAngles.y;
+        int goal = turnGoal(rY); //목표 각도
 
+        while (rY != goal)
+        {
+            rY += 5;
+            rg.MoveRotation(Quaternion.Euler(0, rY, 0));
+            yield return null;
+        }
+        go = true;
+    }
 
+    IEnumerator turnL() //회전 메소드.
+    {
+        int rY = (int)tf.eulerAngles.y;
+        int goal = turnGoal(rY); //목표 각도
 
+        while (rY != goal)
+        {
+            rY -= 5;
+            rg.MoveRotation(Quaternion.Euler(0, rY, 0));
+            yield return null;
+        }
+        go = true;
+    }
 }
