@@ -789,7 +789,7 @@ PlayerSettings:
     Purchasing: 0
     UDP: 0
     UNet: 1
-    Unity Ads: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -804,11 +804,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 156598d8-c3fe-4f32-8e7b-aebd148d5f6b
+  cloudProjectId: 6a77b317-127a-45c1-abaa-561fec001d1d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: GM_short_project
-  organizationId: heesun_choi
+  organizationId: backwon24
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
