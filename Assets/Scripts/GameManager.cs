@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject[] keyFind; //Scene¿¡ Á¸ÀçÇÏ´Â Å°ÀÇ ¼ö
+    GameObject[] keyFind; //Sceneì— ì¡´ì¬í•˜ëŠ” í‚¤ì˜ ìˆ˜
     
-    public int keyCount; //È¹µæÇÑ Å°ÀÇ ¼ö
+    public int keyCount; //íšë“í•œ í‚¤ì˜ ìˆ˜
     public bool isClear;
     public bool isOver;
+    public GameObject GameOver_UI;
+    public GameObject GameClear_UI;
+    
     // Start is called before the first frame update
     void Start()
     {
-        keyCount = 0; //player°¡ È¹µæÇÑ key °³¼ö 0À¸·Î ÃÊ±âÈ­
-        keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene ÀüÃ¼ÀÇ Å° Ã£±â
-        
+        keyCount = 0; //playerê°€ íšë“í•œ key ê°œìˆ˜ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+        keyFind = GameObject.FindGameObjectsWithTag("Key"); //Scene ì „ì²´ì˜ í‚¤ ì°¾ê¸°
     }
 
     // Update is called once per frame
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
         }
         isOver = true;
         Debug.Log("GameOver!");
+        GameOver_UI.SetActive(true);
     }
 
     public void GameClear()
@@ -45,5 +49,6 @@ public class GameManager : MonoBehaviour
         }
         isClear = true;
         Debug.Log("GameClear!");
+        GameClear_UI.SetActive(true);
     }
 }
