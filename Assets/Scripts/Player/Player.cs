@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
         move *= -1;
     }
 
-    public bool seeX = false;
+    public bool seeX;
 
     //private:
     enum TurnState
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private int speed = 5; //달리기 속도
     private int mistake = 100; //스와이프 길이
     private bool s = false; //오른쪽 터치면 true, 왼쪽 터치면 false
-    private bool go = true; //앞으로 갈까말까
+    private bool go = true; //앞으로 가는 중 => 오차 줄이는 용도
 
     Rigidbody rg;
     Transform tf;
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        seeX = false;
         tf = gameObject.GetComponent<Transform>();
         rg = gameObject.GetComponent<Rigidbody>();
         startPos = new Vector3(0, 0, 0);
@@ -75,12 +76,11 @@ public class Player : MonoBehaviour
 
         if (isturn != TurnState.NONE) //회전 명령 확인.
         {
-            Debug.Log(seeX);
+            Debug.Log(!seeX);
             if ((seeX && (int)tf.position.x % TILE == 0) //x축으로 이동 중일 경우 x축이 타일 사이일 때
                 || (!seeX && (int)tf.position.z % TILE == 0)) //z축으로 이동 중일 경우 z축이 타일 사이일 때 회전.
             {
                 go = false;
-                seeX = !seeX;
 
                 if (isturn == TurnState.LEFT)
                 {
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
                 {
                     StartCoroutine(turnR()); //테스트 해보기
                 }
-
+                seeX = !seeX;
                 isturn = TurnState.NONE;
             }
         }
