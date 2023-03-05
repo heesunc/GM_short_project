@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isOver;
     public GameObject GameOver_UI;
     public GameObject GameClear_UI;
+ 
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
         {
             GameClear();
         }   
+
+        
             
     }
 
@@ -51,4 +54,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameClear!");
         GameClear_UI.SetActive(true);
     }
+
 }
