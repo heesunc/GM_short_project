@@ -51,10 +51,13 @@ public class PlayerInteraction : MonoBehaviour
             ObstacleCollision(other);
         }
  
+        if(other.CompareTag("Key"))
+        {
+            CheckKeys(other);
 
-        CheckKeys(other);
-       
-        RemoveInside();
+            RemoveInside();
+        }
+      
        
     }
 
@@ -81,6 +84,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (other.name == insideGroup[index].Keys[j].name)
                 {
                     inCount[index]++;
+                    return;
                 }
             }
 
