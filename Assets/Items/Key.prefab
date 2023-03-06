@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3940574970019107337}
   - component: {fileID: 3940574970019107336}
   - component: {fileID: 3940574970019107339}
+  - component: {fileID: 4755942142123382000}
   - component: {fileID: 3940574970019107338}
-  - component: {fileID: -1597818467759010222}
   m_Layer: 0
   m_Name: Key
   m_TagString: Key
@@ -85,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4755942142123382000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940574970019107340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be758555cf509e43904d2710d7d07d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 50
 --- !u!136 &3940574970019107338
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -99,16 +112,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &-1597818467759010222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3940574970019107340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f223ac0e0f01449a24afaabc50d316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: 100
