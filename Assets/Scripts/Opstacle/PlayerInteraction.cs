@@ -6,17 +6,17 @@ using System;
 public class PlayerInteraction : MonoBehaviour
 {
     [Serializable]
-    public class Array2D //2���� �迭 Ŭ����
+    public class Array2D //2占쏙옙占쏙옙 占썼열 클占쏙옙占쏙옙
     {
         public GameObject [] Keys; 
     }
-    public Array2D [] outsideGroup; //�ٱ��� Ű
-    public Array2D [] insideGroup; //���� Ű
+    public Array2D [] outsideGroup; //占쌕깍옙占쏙옙 키
+    public Array2D [] insideGroup; //占쏙옙占쏙옙 키
     public int[] outCount;
     public int[] inCount;
     public int index;
 
-    public GameObject bossUI; //��ֹ�
+    public GameObject bossUI; //占쏙옙岺占
     public GameObject smokeUI;
     GameObject obstacle; 
     
@@ -40,17 +40,15 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (bossUI.activeSelf) //�Ǵ���� Ȱ��ȭ
+        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Bomper 수정 필요
         {
-            if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomper"))
-                manager.GameOver();
+            if (!bossUI.activeSelf) //악덕상사 활성화X
+                ObstacleCollision(other);
+            else //상사 UI 활성화라면, 충돌처리 X
+            {
+                manager.GameOver(); 
+            }
         }
-
-        if (other.CompareTag("Mail") || other.CompareTag("Smoke") || other.CompareTag("Bomb")) //��ֹ� �浹ó��
-        {
-            ObstacleCollision(other);
-        }
-
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
@@ -59,8 +57,21 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bomper")) //Bomper 수정 필요
+        {
 
-    private void CheckKeys(Collider other) //�浹�� ������Ʈ�� ���� Ű���� �׵θ� Ű���� Ȯ�� �� Count ����
+            if (!bossUI.activeSelf) //악덕상사 활성화X
+                ObstacleCollision(collision.gameObject.GetComponent<Collider>());
+            else //상사 UI 활성화라면, 충돌처리 X
+            {
+                manager.GameOver();
+            }
+        }
+    }
+
+    private void CheckKeys(Collider other) //占썸돌占쏙옙 占쏙옙占쏙옙占쏙옙트占쏙옙 占쏙옙占쏙옙 키占쏙옙占쏙옙 占쌓두몌옙 키占쏙옙占쏙옙 확占쏙옙 占쏙옙 Count 占쏙옙占쏙옙
     {
         for(index = 0; index < outsideGroup.Length; index++)
         {
@@ -90,11 +101,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void RemoveInside()
     {
-       if(outCount[index] == outsideGroup[index].Keys.Length) //�ش� �ٱ��� �׷��� ���� �� �������� �ε�����
+       if(outCount[index] == outsideGroup[index].Keys.Length) //占쌔댐옙 占쌕깍옙占쏙옙 占쌓뤄옙占쏙옙 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占싸듸옙占쏙옙占쏙옙
         {
-            if (inCount[index] > 0) //�ش� ���� �׷��� ���谡 �ϳ��� ������� ���
+            if (inCount[index] > 0) //占쌔댐옙 占쏙옙占쏙옙 占쌓뤄옙占쏙옙 占쏙옙占썼가 占싹놂옙占쏙옙 占쏙옙占쏙옙占쏙옙占 占쏙옙占
                 return; 
-            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //�ƴ϶��, �ش� ���� �׷��� ���� ��� ��Ȱ��ȭ �� keyCount ����
+            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //占싣니띰옙占, 占쌔댐옙 占쏙옙占쏙옙 占쌓뤄옙占쏙옙 占쏙옙占쏙옙 占쏙옙占 占쏙옙활占쏙옙화 占쏙옙 keyCount 占쏙옙占쏙옙
             {
                 insideGroup[index].Keys[j].SetActive(false);
                 manager.keyCount++;
@@ -104,9 +115,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void ObstacleCollision(Collider obstacle)
     {
-        obstacle.gameObject.SetActive(false);
 
-        if(obstacle.CompareTag("Mail"))
+        if (obstacle.CompareTag("Mail"))
         {
             bossUI.SetActive(true);
         }
@@ -117,6 +127,10 @@ public class PlayerInteraction : MonoBehaviour
         else if (obstacle.CompareTag("Bomb"))
         {
             manager.GameOver();
+        }
+        else if(obstacle.CompareTag("Bomper"))
+        {
+            Debug.Log("Bomper Collision"); //Bomper 기능 구현
         }
 
     }
