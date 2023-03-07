@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1525,6 +1525,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
+      propertyPath: boss_UI
+      value: 
+      objectReference: {fileID: 1727160905}
+    - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
+      propertyPath: smoke_UI
+      value: 
+      objectReference: {fileID: 1176267556}
     - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
       propertyPath: keyCountUI
       value: 
@@ -4173,7 +4181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7310381490198143402, guid: 45c59e6293a4ecc4caaffb0eaba9562b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.159024
+      value: -9.52
       objectReference: {fileID: 0}
     - target: {fileID: 7310381490198143402, guid: 45c59e6293a4ecc4caaffb0eaba9562b, type: 3}
       propertyPath: m_LocalPosition.z

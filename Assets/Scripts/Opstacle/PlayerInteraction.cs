@@ -40,27 +40,37 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (bossUI.activeSelf) //악덕상사 활성화
+        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Bomper 수정 필요
         {
-            if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomper"))
-                manager.GameOver();
+            if (!bossUI.activeSelf) //악덕상사 활성화X
+                ObstacleCollision(other);
+            else //상사 UI 활성화라면, 충돌처리 X
+            {
+                manager.GameOver(); 
+            }
         }
-
-        if (other.CompareTag("Mail") || other.CompareTag("Smoke") || other.CompareTag("Bomb")) //장애물 충돌처리
-        {
-            ObstacleCollision(other);
-        }
- 
+          
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
 
             RemoveInside();
         }
-      
-       
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bomper")) //Bomper 수정 필요
+        {
+
+            if (!bossUI.activeSelf) //악덕상사 활성화X
+                ObstacleCollision(collision.gameObject.GetComponent<Collider>());
+            else //상사 UI 활성화라면, 충돌처리 X
+            {
+                manager.GameOver();
+            }
+        }
+    }
 
     private void CheckKeys(Collider other) //충돌한 오브젝트가 안쪽 키인지 테두리 키인지 확인 및 Count 증가
     {
@@ -107,9 +117,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public void ObstacleCollision(Collider obstacle)
     {
-        obstacle.gameObject.SetActive(false);
 
-        if(obstacle.CompareTag("Mail"))
+        if (obstacle.CompareTag("Mail"))
         {
             bossUI.SetActive(true);
         }
@@ -120,6 +129,10 @@ public class PlayerInteraction : MonoBehaviour
         else if (obstacle.CompareTag("Bomb"))
         {
             manager.GameOver();
+        }
+        else if(obstacle.CompareTag("Bomper"))
+        {
+            Debug.Log("Bomper Collision"); //Bomper 기능 구현
         }
 
     }

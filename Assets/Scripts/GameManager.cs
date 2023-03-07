@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public bool isOver;
     public GameObject GameOver_UI;
     public GameObject GameClear_UI;
+    public GameObject boss_UI;
+    public GameObject smoke_UI;
 
     void Start()
     {
@@ -45,8 +47,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameOver!");
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
-        keyCountUI.SetActive(false);
-        
+        InactiveUI(); //이미 활성화 된 UI들 제거
+
     }
 
     public void GameClear()
@@ -59,7 +61,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameClear!");
         Time.timeScale = 0;
         GameClear_UI.SetActive(true);
-        keyCountUI.SetActive(false);        
+        InactiveUI(); 
+    }
+
+
+    private void InactiveUI()
+    {
+        keyCountUI.SetActive(false);
+        smoke_UI.SetActive(false);
+        boss_UI.SetActive(false);
     }
 
 }
