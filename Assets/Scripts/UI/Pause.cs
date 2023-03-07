@@ -7,23 +7,24 @@ public class Pause : MonoBehaviour
 {
     public Button pauseBtn;
     public GameObject PauseUI;
+    GameManager manager;
+    void Start()
+    {
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
     void Update()
     {
-        Debug.Log("Update");
+        //Debug.Log("Update");
         transform.Translate(Time.deltaTime, 0, 0);
     }
     private void FixedUpdate()
     {
-        Debug.Log("FixedUpdate");
+        //Debug.Log("FixedUpdate");
     }
 
     public void OnTogglePauseButton()
     {
-        if (Time.timeScale == 0) //멈춰있으면
-        {
-            Time.timeScale = 1f; //시작
-        }
-        else //움직이면
+        if (Time.timeScale == 1)
         {
             Time.timeScale = 0; //멈추기
             PauseUI.SetActive(true);

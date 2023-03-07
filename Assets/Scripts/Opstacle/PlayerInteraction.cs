@@ -6,17 +6,17 @@ using System;
 public class PlayerInteraction : MonoBehaviour
 {
     [Serializable]
-    public class Array2D //2Â÷¿ø ¹è¿­ Å¬·¡½º
+    public class Array2D //2å ì™ì˜™å ì™ì˜™ å ì¼ì—´ í´å ì™ì˜™å ì™ì˜™
     {
         public GameObject [] Keys; 
     }
-    public Array2D [] outsideGroup; //¹Ù±ùÂÊ Å°
-    public Array2D [] insideGroup; //¾ÈÂÊ Å°
+    public Array2D [] outsideGroup; //å ìŒ•ê¹ì˜™å ì™ì˜™ í‚¤
+    public Array2D [] insideGroup; //å ì™ì˜™å ì™ì˜™ í‚¤
     public int[] outCount;
     public int[] inCount;
     public int index;
 
-    public GameObject bossUI; //Àå¾Ö¹°
+    public GameObject bossUI; //å ì™ì˜™å²ºå 
     public GameObject smokeUI;
     GameObject obstacle; 
     
@@ -40,16 +40,15 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Bomper ¼öÁ¤ ÇÊ¿ä
+        if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomb")) //Bomper ìˆ˜ì • í•„ìš”
         {
-            if (!bossUI.activeSelf) //¾Ç´ö»ó»ç È°¼ºÈ­X
+            if (!bossUI.activeSelf) //ì•…ë•ìƒì‚¬ í™œì„±í™”X
                 ObstacleCollision(other);
-            else //»ó»ç UI È°¼ºÈ­¶ó¸é, Ãæµ¹Ã³¸® X
+            else //ìƒì‚¬ UI í™œì„±í™”ë¼ë©´, ì¶©ëŒì²˜ë¦¬ X
             {
                 manager.GameOver(); 
             }
         }
-          
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
@@ -60,19 +59,19 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bomper")) //Bomper ¼öÁ¤ ÇÊ¿ä
+        if (collision.gameObject.CompareTag("Bomper")) //Bomper ìˆ˜ì • í•„ìš”
         {
 
-            if (!bossUI.activeSelf) //¾Ç´ö»ó»ç È°¼ºÈ­X
+            if (!bossUI.activeSelf) //ì•…ë•ìƒì‚¬ í™œì„±í™”X
                 ObstacleCollision(collision.gameObject.GetComponent<Collider>());
-            else //»ó»ç UI È°¼ºÈ­¶ó¸é, Ãæµ¹Ã³¸® X
+            else //ìƒì‚¬ UI í™œì„±í™”ë¼ë©´, ì¶©ëŒì²˜ë¦¬ X
             {
                 manager.GameOver();
             }
         }
     }
 
-    private void CheckKeys(Collider other) //Ãæµ¹ÇÑ ¿ÀºêÁ§Æ®°¡ ¾ÈÂÊ Å°ÀÎÁö Å×µÎ¸® Å°ÀÎÁö È®ÀÎ ¹× Count Áõ°¡
+    private void CheckKeys(Collider other) //å ì¸ëŒå ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™íŠ¸å ì™ì˜™ å ì™ì˜™å ì™ì˜™ í‚¤å ì™ì˜™å ì™ì˜™ å ìŒ“ë‘ëªŒì˜™ í‚¤å ì™ì˜™å ì™ì˜™ í™•å ì™ì˜™ å ì™ì˜™ Count å ì™ì˜™å ì™ì˜™
     {
         for(index = 0; index < outsideGroup.Length; index++)
         {
@@ -84,7 +83,6 @@ public class PlayerInteraction : MonoBehaviour
                     return;
                 }
             }
-                
         }
 
         for (index = 0; index < insideGroup.Length; index++)
@@ -103,11 +101,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void RemoveInside()
     {
-       if(outCount[index] == outsideGroup[index].Keys.Length) //ÇØ´ç ¹Ù±ùÂÊ ±×·ìÀÇ ¿­¼è Áß ¸¶Áö¸·°ú ºÎµúÈ÷¸é
+       if(outCount[index] == outsideGroup[index].Keys.Length) //å ìŒ”ëŒì˜™ å ìŒ•ê¹ì˜™å ì™ì˜™ å ìŒ“ë¤„ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì‹¸ë“¸ì˜™å ì™ì˜™å ì™ì˜™
         {
-            if (inCount[index] > 0) //ÇØ´ç ¾ÈÂÊ ±×·ìÀÇ ¿­¼è°¡ ÇÏ³ª¶óµµ »ç¶óÁ³À» °æ¿ì
+            if (inCount[index] > 0) //å ìŒ”ëŒì˜™ å ì™ì˜™å ì™ì˜™ å ìŒ“ë¤„ì˜™å ì™ì˜™ å ì™ì˜™å ì¼ê°€ å ì‹¹ë†‚ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å  å ì™ì˜™å 
                 return; 
-            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //¾Æ´Ï¶ó¸é, ÇØ´ç ¾ÈÂÊ ±×·ìÀÇ ¿­¼è ¸ğµÎ ºñÈ°¼ºÈ­ ¹× keyCount Áõ°¡
+            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //å ì‹£ë‹ˆë°ì˜™å , å ìŒ”ëŒì˜™ å ì™ì˜™å ì™ì˜™ å ìŒ“ë¤„ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ å ì™ì˜™å  å ì™ì˜™í™œå ì™ì˜™í™” å ì™ì˜™ keyCount å ì™ì˜™å ì™ì˜™
             {
                 insideGroup[index].Keys[j].SetActive(false);
                 manager.keyCount++;
@@ -132,7 +130,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if(obstacle.CompareTag("Bomper"))
         {
-            Debug.Log("Bomper Collision"); //Bomper ±â´É ±¸Çö
+            Debug.Log("Bomper Collision"); //Bomper ê¸°ëŠ¥ êµ¬í˜„
         }
 
     }

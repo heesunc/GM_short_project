@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
         InactiveUI(); //이미 활성화 된 UI들 제거
-
     }
 
     public void GameClear()
@@ -63,7 +62,6 @@ public class GameManager : MonoBehaviour
         GameClear_UI.SetActive(true);
         InactiveUI(); 
     }
-
 
     private void InactiveUI()
     {

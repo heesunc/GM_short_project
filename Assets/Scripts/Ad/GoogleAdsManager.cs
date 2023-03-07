@@ -1,11 +1,14 @@
 using UnityEngine;
 using GoogleMobileAds.Api;
+using UnityEngine.UI;
 
 namespace Ad
 {
     public class GoogleAdsManager : MonoBehaviour
     {
         private RewardedAd rewardedAd;
+        GameManager manager;
+        public Text GetMoney;
     
         // 보상형 광고 단위 ID
         private string rewardedAdUnitId = "ca-app-pub-3115045377477281/4539879882";
@@ -20,6 +23,8 @@ namespace Ad
     
             // 보상형 광고 로드
             LoadRewardedAd();
+
+            manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
     
         public void LoadRewardedAd()
@@ -70,7 +75,8 @@ namespace Ad
         {
             Debug.Log("User Earned Reward: " + args.Type + " " + args.Amount);
             // 광고 보상 처리 코드를 여기에 작성합니다.
-            Debug.Log("부활!");
+            GetMoney.text="획득한 돈 갯수 : "+manager.keyCount*2;
+            Time.timeScale = 0; // 광고가 끝나도 시간은 흐르지 않음
         }
     }    
 }
