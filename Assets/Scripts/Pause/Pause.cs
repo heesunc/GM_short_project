@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Pause : MonoBehaviour
 {
     public Button pauseBtn;
-    public GameObject TimeUI;
+    public GameObject PauseUI;
     void Update()
     {
         Debug.Log("Update");
@@ -26,7 +26,7 @@ public class Pause : MonoBehaviour
         else //움직이면
         {
             Time.timeScale = 0; //멈추기
-            TimeUI.SetActive(true);
+            PauseUI.SetActive(true);
         }
     }
 }
