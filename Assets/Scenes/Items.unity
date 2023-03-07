@@ -193,10 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a589980aefd057a44ae1c1a995e23099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetMoneyTextO: {fileID: 1508377492}
-  GetMoneyTextC: {fileID: 1487818264}
-  RestMoneyTextO: {fileID: 77367147}
-  RestMoneyTextC: {fileID: 883892633}
+  GetMoneyText: {fileID: 1508377492}
+  RestMoneyText: {fileID: 77367147}
+  GetMoney: {fileID: 1014399337}
 --- !u!222 &77367149
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1526,6 +1525,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
+      propertyPath: Smoke_UI
+      value: 
+      objectReference: {fileID: 1176267556}
+    - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
       propertyPath: keyCountUI
       value: 
       objectReference: {fileID: 503899967}
@@ -2091,10 +2094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a589980aefd057a44ae1c1a995e23099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetMoneyTextO: {fileID: 1508377492}
-  GetMoneyTextC: {fileID: 1487818264}
-  RestMoneyTextO: {fileID: 77367147}
-  RestMoneyTextC: {fileID: 883892633}
+  GetMoneyText: {fileID: 1487818264}
+  RestMoneyText: {fileID: 77367147}
+  GetMoney: {fileID: 883892633}
 --- !u!114 &883892633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,6 +2770,7 @@ GameObject:
   - component: {fileID: 1014399336}
   - component: {fileID: 1014399338}
   - component: {fileID: 1014399337}
+  - component: {fileID: 1014399339}
   m_Layer: 5
   m_Name: Text (Legacy) (2)
   m_TagString: Untagged
@@ -2837,6 +2840,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014399335}
   m_CullTransparentMesh: 1
+--- !u!114 &1014399339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014399335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a589980aefd057a44ae1c1a995e23099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetMoneyText: {fileID: 1508377492}
+  RestMoneyText: {fileID: 77367147}
+  GetMoney: {fileID: 1014399337}
 --- !u!4 &1072595133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3940574970019107337, guid: e1a1d60eb7a90a249a24328ae4b1985c, type: 3}
@@ -4475,10 +4493,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a589980aefd057a44ae1c1a995e23099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetMoneyTextO: {fileID: 1508377492}
-  GetMoneyTextC: {fileID: 1487818264}
-  RestMoneyTextO: {fileID: 77367147}
-  RestMoneyTextC: {fileID: 883892633}
+  GetMoneyText: {fileID: 1487818264}
+  RestMoneyText: {fileID: 77367147}
+  GetMoney: {fileID: 883892633}
 --- !u!222 &1487818266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4572,10 +4589,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a589980aefd057a44ae1c1a995e23099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetMoneyTextO: {fileID: 1508377492}
-  GetMoneyTextC: {fileID: 1487818264}
-  RestMoneyTextO: {fileID: 77367147}
-  RestMoneyTextC: {fileID: 883892633}
+  GetMoneyText: {fileID: 1508377492}
+  RestMoneyText: {fileID: 77367147}
+  GetMoney: {fileID: 1014399337}
 --- !u!222 &1508377494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5215,6 +5231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbf96986fc0c39489bdccb6b67fe202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GetMoney: {fileID: 1014399337}
 --- !u!114 &1655583510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5321,7 +5338,6 @@ GameObject:
   - component: {fileID: 1660424376}
   - component: {fileID: 1660424375}
   - component: {fileID: 1660424374}
-  - component: {fileID: 1660424373}
   m_Layer: 5
   m_Name: NextBtn
   m_TagString: Untagged
@@ -5350,18 +5366,6 @@ RectTransform:
   m_AnchoredPosition: {x: -177, y: -242.80005}
   m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1660424373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1660424371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbf96986fc0c39489bdccb6b67fe202, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1660424374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5405,19 +5409,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1660424375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1660424373}
-        m_TargetAssemblyTypeName: Ad.GoogleAdsManager, Assembly-CSharp
-        m_MethodName: ShowAd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1660424375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6550,6 +6542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbf96986fc0c39489bdccb6b67fe202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GetMoney: {fileID: 883892633}
 --- !u!114 &2102366467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -46,7 +46,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         GameOver_UI.SetActive(true);
         keyCountUI.SetActive(false);
-        
     }
 
     public void GameClear()
@@ -59,7 +58,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameClear!");
         Time.timeScale = 0;
         GameClear_UI.SetActive(true);
-        keyCountUI.SetActive(false);        
+        keyCountUI.SetActive(false);
     }
 
 }

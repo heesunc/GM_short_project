@@ -6,17 +6,17 @@ using System;
 public class PlayerInteraction : MonoBehaviour
 {
     [Serializable]
-    public class Array2D //2Â÷¿ø ¹è¿­ Å¬·¡½º
+    public class Array2D //2ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ Å¬ï¿½ï¿½ï¿½ï¿½
     {
         public GameObject [] Keys; 
     }
-    public Array2D [] outsideGroup; //¹Ù±ùÂÊ Å°
-    public Array2D [] insideGroup; //¾ÈÂÊ Å°
+    public Array2D [] outsideGroup; //ï¿½Ù±ï¿½ï¿½ï¿½ Å°
+    public Array2D [] insideGroup; //ï¿½ï¿½ï¿½ï¿½ Å°
     public int[] outCount;
     public int[] inCount;
     public int index;
 
-    public GameObject bossUI; //Àå¾Ö¹°
+    public GameObject bossUI; //ï¿½ï¿½Ö¹ï¿½
     public GameObject smokeUI;
     GameObject obstacle; 
     
@@ -40,29 +40,27 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other) 
     {
-        if (bossUI.activeSelf) //¾Ç´ö»ó»ç È°¼ºÈ­
+        if (bossUI.activeSelf) //ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
         {
             if (other.CompareTag("Smoke") || other.CompareTag("Mail") || other.CompareTag("Bomper"))
                 manager.GameOver();
         }
 
-        if (other.CompareTag("Mail") || other.CompareTag("Smoke") || other.CompareTag("Bomb")) //Àå¾Ö¹° Ãæµ¹Ã³¸®
+        if (other.CompareTag("Mail") || other.CompareTag("Smoke") || other.CompareTag("Bomb")) //ï¿½ï¿½Ö¹ï¿½ ï¿½æµ¹Ã³ï¿½ï¿½
         {
             ObstacleCollision(other);
         }
- 
+
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
 
             RemoveInside();
         }
-      
-       
     }
 
 
-    private void CheckKeys(Collider other) //Ãæµ¹ÇÑ ¿ÀºêÁ§Æ®°¡ ¾ÈÂÊ Å°ÀÎÁö Å×µÎ¸® Å°ÀÎÁö È®ÀÎ ¹× Count Áõ°¡
+    private void CheckKeys(Collider other) //ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ ï¿½×µÎ¸ï¿½ Å°ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ Count ï¿½ï¿½ï¿½ï¿½
     {
         for(index = 0; index < outsideGroup.Length; index++)
         {
@@ -74,7 +72,6 @@ public class PlayerInteraction : MonoBehaviour
                     return;
                 }
             }
-                
         }
 
         for (index = 0; index < insideGroup.Length; index++)
@@ -93,11 +90,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private void RemoveInside()
     {
-       if(outCount[index] == outsideGroup[index].Keys.Length) //ÇØ´ç ¹Ù±ùÂÊ ±×·ìÀÇ ¿­¼è Áß ¸¶Áö¸·°ú ºÎµúÈ÷¸é
+       if(outCount[index] == outsideGroup[index].Keys.Length) //ï¿½Ø´ï¿½ ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            if (inCount[index] > 0) //ÇØ´ç ¾ÈÂÊ ±×·ìÀÇ ¿­¼è°¡ ÇÏ³ª¶óµµ »ç¶óÁ³À» °æ¿ì
+            if (inCount[index] > 0) //ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½è°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 return; 
-            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //¾Æ´Ï¶ó¸é, ÇØ´ç ¾ÈÂÊ ±×·ìÀÇ ¿­¼è ¸ðµÎ ºñÈ°¼ºÈ­ ¹× keyCount Áõ°¡
+            for(int j = 0; j < insideGroup[index].Keys.Length; j++) //ï¿½Æ´Ï¶ï¿½ï¿½, ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ keyCount ï¿½ï¿½ï¿½ï¿½
             {
                 insideGroup[index].Keys[j].SetActive(false);
                 manager.keyCount++;
