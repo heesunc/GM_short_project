@@ -1442,6 +1442,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 769873176}
     - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
+      propertyPath: keyCountUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749492051640169366, guid: c959027ded20c5447922f5e6d871c373, type: 3}
       propertyPath: GameOver_UI
       value: 
       objectReference: {fileID: 1026704431}
@@ -2238,7 +2242,6 @@ GameObject:
   - component: {fileID: 881504764}
   - component: {fileID: 881504766}
   - component: {fileID: 881504765}
-  - component: {fileID: 881504767}
   m_Layer: 5
   m_Name: GameClear
   m_TagString: UI
@@ -2305,27 +2308,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881504763}
   m_CullTransparentMesh: 1
---- !u!114 &881504767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881504763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec3d8be44ae0b54f8058bf81674ad65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyFind: []
-  keyCount: 0
-  isClear: 0
-  isOver: 0
-  GameOver_UI: {fileID: 1026704431}
-  GameClear_UI: {fileID: 881504763}
-  other_UI_objects:
-  - {fileID: 1026704431}
-  - {fileID: 881504763}
 --- !u!1 &884165735
 GameObject:
   m_ObjectHideFlags: 0
@@ -2921,7 +2903,6 @@ GameObject:
   - component: {fileID: 1026704432}
   - component: {fileID: 1026704434}
   - component: {fileID: 1026704433}
-  - component: {fileID: 1026704435}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -2996,27 +2977,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026704431}
   m_CullTransparentMesh: 1
---- !u!114 &1026704435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026704431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fec3d8be44ae0b54f8058bf81674ad65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyFind: []
-  keyCount: 0
-  isClear: 0
-  isOver: 0
-  GameOver_UI: {fileID: 1026704431}
-  GameClear_UI: {fileID: 881504763}
-  other_UI_objects:
-  - {fileID: 1026704431}
-  - {fileID: 881504763}
 --- !u!1 &1127483434
 GameObject:
   m_ObjectHideFlags: 0
