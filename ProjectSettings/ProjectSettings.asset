@@ -805,11 +805,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 4a7c4933-83df-4d3e-84f1-94b66395b391
+  cloudProjectId: 6a77b317-127a-45c1-abaa-561fec001d1d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GM_short_project (1)
-  organizationId: heesun_choi
+  projectName: GM_short_project
+  organizationId: backwon24
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
