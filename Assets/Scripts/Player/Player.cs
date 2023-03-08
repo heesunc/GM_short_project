@@ -205,10 +205,7 @@ public class Player : MonoBehaviour
         {
             isJump = false;
         }
-        else if (other.collider.CompareTag("Bomper"))
-        {
-            ChangeMove();
-        }
+        
     }
 
     private int turnGoal(int r)

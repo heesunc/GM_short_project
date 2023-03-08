@@ -139,7 +139,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if(obstacle.CompareTag("Bomper"))
         {
-            Debug.Log("Bomper Collision"); //Bomper 기능 구현
+            gameObject.GetComponent<Player>().ChangeMove();
         }
 
     }
