@@ -6,21 +6,22 @@ using System;
 public class PlayerInteraction : MonoBehaviour
 {
     [Serializable]
-    public class Array2D //2占쏙옙占쏙옙 占썼열 클占쏙옙占쏙옙
+    public class Array2D //2차원 배열
     {
         public GameObject [] Keys; 
     }
-    public Array2D [] outsideGroup; //占쌕깍옙占쏙옙 키
-    public Array2D [] insideGroup; //占쏙옙占쏙옙 키
+    public Array2D [] outsideGroup; //바깥쪽 키
+    public Array2D [] insideGroup; //안쪽 키
     public int[] outCount;
     public int[] inCount;
     public int index;
 
-    public GameObject bossUI; //占쏙옙岺占
+    public GameObject bossUI;
     public GameObject smokeUI;
     GameObject obstacle; 
     
     GameManager manager;
+    UITimer timer;
 
     
 
@@ -28,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        timer = smokeUI.GetComponent<UITimer>();
     }
 
     // Update is called once per frame
@@ -46,9 +48,13 @@ public class PlayerInteraction : MonoBehaviour
                 ObstacleCollision(other);
             else //상사 UI 활성화라면, 충돌처리 X
             {
-                manager.GameOver(); 
+                if (other.CompareTag("Smoke"))//담배는 상사 있을 경우 GameOver X
+                    ObstacleCollision(other);
+                else
+                    manager.GameOver(); 
             }
         }
+
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
@@ -122,7 +128,10 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if (obstacle.CompareTag("Smoke"))
         {
-            smokeUI.SetActive(true);
+            if (smokeUI.activeSelf) //이미 시야방해 활성화라면
+                timer.uiTimer = 0.0f; //Timer 0초
+            else
+                smokeUI.SetActive(true);
         }
         else if (obstacle.CompareTag("Bomb"))
         {

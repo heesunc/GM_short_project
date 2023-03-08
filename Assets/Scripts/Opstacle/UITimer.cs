@@ -5,7 +5,8 @@ using UnityEngine;
 public class UITimer : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float uiTimer;
+    public float uiTimer;
+    public float limitTime =10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class UITimer : MonoBehaviour
     void Update()
     {
         uiTimer += Time.deltaTime; //UI Å¸ÀÌ¸Ó
-        if (uiTimer >= 5.0f)
+        if (uiTimer >= limitTime)
         {
             gameObject.SetActive(false);
             uiTimer = 0.0f;
