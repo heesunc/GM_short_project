@@ -46,13 +46,13 @@ public class Player : MonoBehaviour
         LEFT = -1
     };
 
-    const int TILE = 10;
+    const int TILE = 7;
 
     private int move = 1;
     private TurnState isturn = TurnState.NONE;
     private bool isJump = false;
     private int f = 5; //점프 힘 조절
-    private float speed = 5; //달리기 속도
+    private float speed = 7; //달리기 속도
     private int mistake = 100; //스와이프 길이
     private bool s = false; //왼쪽 터치면 true, 오른쪽 터치면 false
     private bool go = true; //앞으로 가는 중 => 오차 줄이는 용도
