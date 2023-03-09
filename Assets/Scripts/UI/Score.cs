@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
         // 남은 돈 개수
         int rest = manager.keyFind.Length;
         int restmoney = rest-manager.keyCount;
-        RestMoneyText.text="남은 돈 : "+restmoney; // GM에 있는거는 private.. 가져오는게 나을지?
+        RestMoneyText.text="남은 돈 : "+restmoney;
 
         // 획득한 돈 개수
         GetMoney.text="획득한 돈 갯수 : "+manager.keyCount;

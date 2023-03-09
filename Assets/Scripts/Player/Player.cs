@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public void ChangeMove() //ï¿½Ë¹ï¿½
+    public void ChangeMove() //³Ë¹é
     {
         move *= -1;
     }
@@ -51,11 +51,11 @@ public class Player : MonoBehaviour
     private int move = 1;
     private TurnState isturn = TurnState.NONE;
     private bool isJump = false;
-    private int f = 5; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    public float speed = 7; //ï¿½Þ¸ï¿½ï¿½ï¿½ ï¿½Óµï¿½
-    private int mistake = 100; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-    private bool s = false; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ false
-    private bool go = true; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ => ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ëµµ
+    private int f = 5; //Á¡ÇÁ Èû Á¶Àý
+    private float speed = 7; //´Þ¸®±â ¼Óµµ
+    private int mistake = 100; //½º¿ÍÀÌÇÁ ±æÀÌ
+    private bool s = false; //¿ÞÂÊ ÅÍÄ¡¸é true, ¿À¸¥ÂÊ ÅÍÄ¡¸é false
+    private bool go = true; //¾ÕÀ¸·Î °¡´Â Áß => ¿ÀÂ÷ ÁÙÀÌ´Â ¿ëµµ
     private float playTime = 0f;
 
     Rigidbody rg;
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //seeX = false;
+        seeX = false;
         tf = gameObject.GetComponent<Transform>();
         rg = gameObject.GetComponent<Rigidbody>();
         startPos = new Vector3(0, 0, 0);
@@ -73,22 +73,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Swipeï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ô·ï¿½ ï¿½Þ±ï¿½
-        //ï¿½Æ¿ï¿½ ï¿½ï¿½Ä¡ ï¿½Þ´ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ï¿½Ï°ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® falseï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-        if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //Ã¹ ï¿½ï¿½Â° ï¿½ï¿½Ä¡ ï¿½ß»ï¿½
+        //SwipeÀÎ °æ¿ì ÅÍÄ¡ ÀÔ·Â ¹Þ±â
+        //¾Æ¿¹ ÅÍÄ¡ ¹Þ´Â ºÎºÐÀ» ºÐ¸®ÇÏ°í ´Ù¸¥ ¿ÀºêÁ§Æ®¿¡ ºÙ¿©¼­ ¿ÀºêÁ§Æ® falseÇÏ´Â °Ô ´õ ±ò²ûÇÒ µí
+        if (Option.getController() == Controller.SWIPE && Input.touchCount > 0) //Ã¹ ¹øÂ° ÅÍÄ¡ ¹ß»ý
         {
             Touch touch0 = Input.GetTouch(0);
 
-            if (touch0.phase == TouchPhase.Began) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½
+            if (touch0.phase == TouchPhase.Began) //¿À¸¥ÂÊ ÅÍÄ¡¸é Á¡ÇÁ, ¿ÞÂÊ ÅÍÄ¡¸é ½º¿ÍÀÌÇÁ ÁØºñ
             {
                 startPos = touch(touch0);
             }
-            else if (s && (touch0.phase == TouchPhase.Moved)) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+            else if (s && (touch0.phase == TouchPhase.Moved)) //¿ÞÂÊ ÅÍÄ¡ÀÏ ¶§: ½º¿ÍÀÌÇÁ ¾î´ÀÂÊÀÎÁö È®ÀÎ
             {
                 swipe(touch0, startPos);
             }
 
-            if (Input.touchCount > 1) //ï¿½ï¿½ ï¿½ï¿½Â° ï¿½ï¿½Ä¡ ï¿½ß»ï¿½ ï¿½ï¿½ Ã¹ï¿½ï¿½Â° ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½.
+            if (Input.touchCount > 1) //µÎ ¹øÂ° ÅÍÄ¡ ¹ß»ý ½Ã Ã¹¹øÂ° ÅÍÄ¡¿Í °°Àº ¹æ½ÄÀ¸·Î Ã³¸®.
             {
                 Touch touch1 = Input.GetTouch(1);
 
@@ -103,17 +103,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+        //È¸Àü ¸í·É È®ÀÎ
         if (isturn != TurnState.NONE)
         {
-            Debug.Log("ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("¹öÆ°Àº ¹®Á¦ ¾ø´Ù");
             float x = tf.position.x;
             float z = tf.position.z;
 
-            if ((seeX && checkPlace(x) && Math.Round(x) % TILE == 0) //xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
-                || (!seeX && checkPlace(z) && Math.Round(z) % TILE == 0)) //zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ zï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È¸ï¿½ï¿½.
+            if ((seeX && checkPlace(x) && Math.Round(x) % TILE == 0) //xÃàÀ¸·Î ÀÌµ¿ ÁßÀÏ °æ¿ì xÃàÀÌ Å¸ÀÏ »çÀÌÀÏ ¶§
+                || (!seeX && checkPlace(z) && Math.Round(z) % TILE == 0)) //zÃàÀ¸·Î ÀÌµ¿ ÁßÀÏ °æ¿ì zÃàÀÌ Å¸ÀÏ »çÀÌÀÏ ¶§ È¸Àü.
             {
-                Debug.Log("checkPlaceï¿½ï¿½ ï¿½Ç´Âµï¿½");
+                Debug.Log("checkPlaceµµ µÇ´Âµ¥");
                 go = false;
 
                 if (isturn == TurnState.LEFT)
@@ -122,21 +122,21 @@ public class Player : MonoBehaviour
                 }
                 else //RIGHT
                 {
-                    StartCoroutine(turnR()); //ï¿½×½ï¿½Æ® ï¿½Øºï¿½ï¿½ï¿½
+                    StartCoroutine(turnR()); //Å×½ºÆ® ÇØº¸±â
                 }
                 seeX = !seeX;
                 isturn = TurnState.NONE;
             }
         }
         
-        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+        //¾ÕÀ¸·Î °¡Áî¾Æ
         if (go == true)
         {
-            tf.Translate(Vector3.forward * speed * move * Time.deltaTime); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
+            tf.Translate(Vector3.forward * speed * move * Time.deltaTime); //¾ÕÀ¸·Î °¡µµ·Ï ÇÔ, °ÔÀÓ ¼Óµµ º¸Á¤
         }
 
-        //ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½
-        //ï¿½Ã·ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½à¿¡ ï¿½Ê¿ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+        //½Ã°£¿¡ µû¸¥ °¡¼Óµµ
+        //ÇÃ·¹ÀÌÅ¸ÀÓ ¸¸¾à¿¡ ÇÊ¿äÇÏ¸é ¸î ¹øÂ° Áõ¼ÓÀÎÁö ¼¼´Â º¯¼ö µµÀÔ.
         playTime += Time.deltaTime;
         if (playTime > 25)
         {
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
         speed *= 1.2f;
     }
 
-    private bool checkPlace (float x) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¹ï¿½ Å©ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ý¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¶ï¿½
+    private bool checkPlace (float x) //¿ÀÂ÷°¡ ³Ê¹« Å©´Ï±î Á¶±Ý¸¸ ´õ °¡¼­ µ¹¾Æ¶ó
     {
         float xf = x - (float)Math.Floor(x);
         Debug.Log(xf);
@@ -161,12 +161,12 @@ public class Player : MonoBehaviour
             return false; //xd
     }
 
-    private Vector3 touch(Touch touch) //ï¿½ï¿½Ä¡ ï¿½ß»ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½.
+    private Vector3 touch(Touch touch) //ÅÍÄ¡ ¹ß»ý -> ¿ÞÂÊÀÎÁö ¿À¸¥ÂÊÀÎÁö È®ÀÎ.
     {
         if (touch.position.x > 960)
         {
             Jump();
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡");
+            Debug.Log("¿À¸¥ÂÊ ÅÍÄ¡");
         }
         else
         {
@@ -176,22 +176,22 @@ public class Player : MonoBehaviour
         return touch.position;
     }
 
-    private void swipe(Touch touch, Vector3 startPos) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ß»ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½.
+    private void swipe(Touch touch, Vector3 startPos) //¿ÞÂÊ ÅÍÄ¡ ¹ß»ý -> ¾î´ÀÂÊ ½º¿ÍÀÌÇÁÀÎÁö È®ÀÎ.
     {
-        if (touch.position.x - startPos.x > mistake) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ È¸ï¿½ï¿½ ï¿½ì¼±
+        if (touch.position.x - startPos.x > mistake) //Á÷Áøº¸´Ù´Â È¸Àü ¿ì¼±
         {
             oderTurnR();
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("¿À¸¥ÂÊÀ¸·Î ½º¿ÍÀÌÇÁ");
         }
         else if (startPos.x - touch.position.x > mistake)
         {
             isturn = TurnState.LEFT;
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("¿ÞÂÊÀ¸·Î ½º¿ÍÀÌÇÁ");
         }
         else if (touch.position.y - startPos.y > mistake)
         {
             oderFront();
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            Debug.Log("À§ÂÊÀ¸·Î ½º¿ÍÀÌÇÁ");
         }
         else
             return;
@@ -199,9 +199,9 @@ public class Player : MonoBehaviour
         s = false;
     }
     
-    private void OnCollisionEnter(Collision other) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½.
+    private void OnCollisionEnter(Collision other) //Á¡ÇÁ °¡´É »óÅÂ È®ÀÎ.
     {
-        if (other.collider.CompareTag("Floor")) //ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+        if (other.collider.CompareTag("Floor")) //´ë¼Ò¹®ÀÚ È®ÀÎ
         {
             isJump = false;
         }
@@ -221,10 +221,10 @@ public class Player : MonoBehaviour
         return r;
     }
 
-    IEnumerator turnR() //È¸ï¿½ï¿½ ï¿½Þ¼Òµï¿½.
+    IEnumerator turnR() //È¸Àü ¸Þ¼Òµå.
     {
         int rY = (int)tf.eulerAngles.y;
-        int goal = turnGoal(rY); //ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
+        int goal = turnGoal(rY); //¸ñÇ¥ °¢µµ
 
         while (rY != goal)
         {
@@ -235,10 +235,10 @@ public class Player : MonoBehaviour
         go = true;
     }
 
-    IEnumerator turnL() //È¸ï¿½ï¿½ ï¿½Þ¼Òµï¿½.
+    IEnumerator turnL() //È¸Àü ¸Þ¼Òµå.
     {
         int rY = (int)tf.eulerAngles.y;
-        int goal = turnGoal(rY); //ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
+        int goal = turnGoal(rY); //¸ñÇ¥ °¢µµ
 
         while (rY != goal)
         {
