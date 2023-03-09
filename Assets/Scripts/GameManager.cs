@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-        keyCountText.text = keyCount.ToString(); //KeyCount UI
+        keyCountText.text = (keyFind.Length - keyCount).ToString(); //KeyCount UI
 
         if (keyFind.Length == keyCount)
         {
