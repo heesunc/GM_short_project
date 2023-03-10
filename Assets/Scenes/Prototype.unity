@@ -70754,6 +70754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: check36
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: feebfc703591a3343aca8bc65ea70286, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: feebfc703591a3343aca8bc65ea70286, type: 3}
 --- !u!1001 &1834438729
