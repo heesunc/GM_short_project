@@ -65,7 +65,6 @@ public class GameManager : MonoBehaviour
 
     private void InactiveUI()
     {
-        keyCountUI.SetActive(false);
         smoke_UI.SetActive(false);
         boss_UI.SetActive(false);
     }
