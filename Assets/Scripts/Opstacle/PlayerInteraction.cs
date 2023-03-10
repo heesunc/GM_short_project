@@ -15,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     public int[] outCount;
     public int[] inCount;
     public int index;
+    public bool notCount;
 
     public GameObject bossUI;
     public GameObject smokeUI;
@@ -58,8 +59,9 @@ public class PlayerInteraction : MonoBehaviour
         if(other.CompareTag("Key"))
         {
             CheckKeys(other);
-
-            RemoveInside();
+          
+            if(!notCount)
+                RemoveInside();
         }
     }
 
@@ -86,6 +88,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (other.name == outsideGroup[index].Keys[j].name)
                 {
                     outCount[index]++;
+                    notCount = false;
                     return;
                 }
             }
@@ -98,11 +101,14 @@ public class PlayerInteraction : MonoBehaviour
                 if (other.name == insideGroup[index].Keys[j].name)
                 {
                     inCount[index]++;
+                    notCount = false;
                     return;
                 }
             }
 
         }
+
+        notCount = true;
     }
 
     private void RemoveInside()
@@ -115,6 +121,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 insideGroup[index].Keys[j].SetActive(false);
                 manager.keyCount++;
+                
             }
         }
     }
