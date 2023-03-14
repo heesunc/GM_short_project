@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4bfc5b10468dfe140a76839adc6295cc
+guid: 1cab053e043ff4147b732b2909ded1b6
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,38 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: walk|runningjump (1)
-      takeName: walk|runningjump
-      internalID: -3326478780085511439
-      firstFrame: 0
-      lastFrame: 22
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: walk|jump
-      takeName: walk|jump
-      internalID: 3512610755917028830
+      name: walk|walk|walk|joyfulrun
+      takeName: walk|walk|walk|joyfulrun
+      internalID: 50075346493110500
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -91,40 +62,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk|run
-      takeName: walk|run
-      internalID: 232712401727912265
+      name: walk|walk|walk|jump
+      takeName: walk|walk|walk|jump
+      internalID: -5493887336237089200
       firstFrame: 0
-      lastFrame: 19
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: walk|runningjump
-      takeName: walk|runningjump
-      internalID: -5137031329906591464
-      firstFrame: 0
-      lastFrame: 22
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -149,9 +91,67 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk|vicory2
-      takeName: walk|vicory2
-      internalID: 4875803021833015338
+      name: walk|walk|walk|run
+      takeName: walk|walk|walk|run
+      internalID: 7142116468047171642
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walk|walk|walk|runningjump
+      takeName: walk|walk|walk|runningjump
+      internalID: -4104183865322691859
+      firstFrame: 0
+      lastFrame: 22
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walk|walk|walk|vicory2
+      takeName: walk|walk|walk|vicory2
+      internalID: -4459785279620231746
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -178,9 +178,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk|victory
-      takeName: walk|victory
-      internalID: 3015251050058513882
+      name: walk|walk|walk|victory
+      takeName: walk|walk|walk|victory
+      internalID: 1003157280439848704
       firstFrame: 0
       lastFrame: 108
       wrapMode: 0
@@ -207,9 +207,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: walk|walk
-      takeName: walk|walk
-      internalID: 2331960340054350784
+      name: walk|walk|walk|walk
+      takeName: walk|walk|walk|walk
+      internalID: -2638388185018500661
       firstFrame: 0
       lastFrame: 29
       wrapMode: 0
@@ -218,7 +218,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
